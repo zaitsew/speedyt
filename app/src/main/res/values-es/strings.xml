@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Speedyt</string>
+    <string name="tagline">Test de velocidad de internet sin anuncios</string>
+    <string name="privacy_note">Sin anuncios. Sin rastreo. Solo sale de este televisor el tráfico de la prueba.</string>
+
+    <string name="start_test">Iniciar prueba</string>
+    <string name="history">Historial</string>
+    <string name="run_again">Repetir prueba</string>
+    <string name="cancel">Cancelar</string>
+    <string name="connected_via">Conectado por %1$s</string>
+
+    <string name="unit_mbps">Mbps</string>
+    <string name="unit_ms">ms</string>
+
+    <string name="phase_latency">Midiendo la latencia</string>
+    <string name="phase_download">Probando la descarga</string>
+    <string name="phase_upload">Probando la subida</string>
+    <string name="server_label">Servidor: %1$s</string>
+
+    <string name="results_title">Resultados</string>
+    <string name="download">Descarga</string>
+    <string name="upload">Subida</string>
+    <string name="ping">Ping</string>
+    <string name="jitter">Jitter</string>
+    <string name="ping_loaded_download">Ping durante la descarga</string>
+    <string name="ping_loaded_upload">Ping durante la subida</string>
+    <string name="bufferbloat">Bufferbloat</string>
+    <string name="bufferbloat_a">Excelente: la latencia sigue baja con carga</string>
+    <string name="bufferbloat_b">Buena: un pequeño retardo con carga</string>
+    <string name="bufferbloat_c">Regular: un retardo apreciable con carga</string>
+    <string name="bufferbloat_d">Mala: un retardo importante con carga</string>
+
+    <string name="handles_title">Lo que aguanta esta conexión</string>
+    <string name="handles_4k">Vídeos 4K a la vez</string>
+    <string name="handles_1080p">Vídeos 1080p a la vez</string>
+    <string name="handles_calls">Videollamadas HD</string>
+    <string name="handles_gaming">Juegos online</string>
+    <string name="gaming_good">Bien</string>
+    <string name="gaming_poor">Mejorable</string>
+
+    <string name="connection_title">Conexión</string>
+    <string name="connection_type">Tipo</string>
+    <string name="connection_band">Banda</string>
+    <string name="connection_signal">Señal</string>
+    <string name="connection_link">Velocidad del enlace</string>
+    <string name="connection_ethernet">Ethernet</string>
+    <string name="connection_wifi">Wi-Fi</string>
+    <string name="connection_other">Otra red</string>
+    <string name="connection_none">Sin conexión</string>
+    <string name="band_2_4">2,4 GHz</string>
+    <string name="band_5">5 GHz</string>
+    <string name="band_6">6 GHz</string>
+    <string name="signal_excellent">Excelente</string>
+    <string name="signal_good">Buena</string>
+    <string name="signal_fair">Aceptable</string>
+    <string name="signal_weak">Débil</string>
+    <string name="signal_value">%1$d dBm · %2$s</string>
+    <string name="link_value">%1$d Mbps</string>
+    <string name="unknown_value">Desconocido</string>
+
+    <string name="tips_title">Consejos</string>
+    <string name="tip_5ghz">Estás en una red Wi-Fi de 2,4 GHz. Conecta el televisor a la red de 5 GHz para ir más rápido y con menos cortes.</string>
+    <string name="tip_weak_signal">La señal Wi-Fi es débil (%1$d dBm). Acerca el router o el televisor, o usa un cable Ethernet.</string>
+    <string name="tip_ethernet_100">Muchos televisores tienen un puerto Ethernet de 100 Mbps. Puede que el límite sea el del televisor, no el de tu línea.</string>
+    <string name="tip_wifi_link">El enlace Wi-Fi (%1$d Mbps) es el cuello de botella: no llega al doble de tu velocidad de descarga medida.</string>
+
+    <string name="history_title">Historial</string>
+    <string name="history_empty">Aún no hay pruebas. Haz una y aparecerá aquí.</string>
+    <string name="history_col_date">Fecha</string>
+    <string name="history_col_download">Descarga</string>
+    <string name="history_col_upload">Subida</string>
+    <string name="history_col_ping">Ping</string>
+    <string name="history_col_connection">Conexión</string>
+
+    <string name="error_no_network">No hay conexión a internet. Revisa la red e inténtalo de nuevo.</string>
+    <string name="error_timeout">La prueba ha tardado demasiado. Revisa tu conexión e inténtalo de nuevo.</string>
+    <string name="error_failed">No se ha podido completar la prueba. Inténtalo de nuevo.</string>
+</resources>
