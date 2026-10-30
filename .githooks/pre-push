@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+# Runs the same checks as CI would, on this machine. Enable with:
+#   git config core.hooksPath .githooks
+exec "$(git rev-parse --show-toplevel)/check.sh"
