@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Uploads the Play store listing (texts, icon, feature graphic, TV banner, TV
-# screenshots) for every language in docs/play/listing/, through
+# and phone screenshots) for every language in docs/play/listing/, through
 # `~/ops/bin/play listing`. Extra arguments pass through (--dry-run, --lang).
 #
 # Texts live in docs/play/listing/<lang>/; graphics are shared from docs/play/
@@ -26,6 +26,9 @@ for src in "$root"/docs/play/listing/*/; do
     exit 1
   fi
   cp "$shots"/*.png "$dst/images/tvScreenshots/"
+  # Play requires phone screenshots even for a TV-only app; 16:9 is accepted.
+  mkdir -p "$dst/images/phoneScreenshots"
+  cp "$shots"/*.png "$dst/images/phoneScreenshots/"
 done
 
 "$play" listing --package com.fabriquefutur.speedyt --dir "$out" "$@"

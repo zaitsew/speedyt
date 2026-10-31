@@ -22,7 +22,9 @@ has no SDK besides AndroidX, Compose for TV and OkHttp.
 - Upload: `~/ops/bin/play upload --package com.fabriquefutur.speedyt --aab <aab> --track internal`.
   The service account `play-publisher@<gcp-project>.iam.gserviceaccount.com`
   needs "Release to testing tracks" (and "Manage store presence" for listing
-  images) on this app: Play Console → Users and permissions.
+  images) on this app: Play Console → Users and permissions. While the app is
+  still a draft, a listing commit also needs "Edit and delete draft apps";
+  without it Play answers 403.
 
 ## 2. Create app
 
@@ -57,7 +59,10 @@ All in `docs/play/`, drawn by `swift tools/make-banner.swift`.
 | Android TV banner | 1280 × 720 | `tv-banner-1280x720.png` |
 | TV screenshots | 1920 × 1080, 1–8 per language | `screenshots/<locale>/` |
 
-Phone screenshots are not needed: the app is TV-only (`leanback` required).
+Play still requires 2–8 phone screenshots on the default listing, even for a
+TV-only app: the dashboard's "Set up your store listing" step stays open without
+them. The phone slot accepts 16:9, so `tools/play-listing.sh` uploads the same
+TV screenshots there.
 
 Upload texts and graphics for every language with `tools/play-listing.sh`
 (add `--dry-run` first). It assembles the fastlane layout and calls
