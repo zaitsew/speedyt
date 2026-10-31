@@ -14,17 +14,14 @@ fun formatMbps(v: Double): String = String.format(Locale.getDefault(), if (v >= 
 
 fun formatMs(v: Double): String = String.format(Locale.getDefault(), if (v >= 10) "%.0f" else "%.1f", v)
 
-/** "Madrid (MAD)", or whatever part the server reported. Null when it reported nothing. */
+/**
+ * "Madrid (MAD)", or the bare code for a data centre not in [COLO_CITIES].
+ * Null without a code: Cloudflare's `city` and `country` headers locate the
+ * viewer, not the server, so they never name it.
+ */
 fun serverName(server: ServerInfo?): String? {
-    if (server == null) return null
-    val city = server.city?.takeIf { it.isNotBlank() }
-    val colo = server.colo?.takeIf { it.isNotBlank() }
-    return when {
-        city != null && colo != null -> "$city ($colo)"
-        city != null -> city
-        colo != null -> colo
-        else -> server.country?.takeIf { it.isNotBlank() }
-    }
+    val colo = server?.colo?.trim()?.uppercase(Locale.ROOT)?.takeIf { it.isNotEmpty() } ?: return null
+    return COLO_CITIES[colo]?.let { "$it ($colo)" } ?: colo
 }
 
 @Composable

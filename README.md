@@ -31,9 +31,11 @@ The test talks to Cloudflare's public speed-test endpoints,
 | Loaded latency | While download runs, and again while upload runs, a separate connection keeps probing latency about 5 times a second. Probes in the warm-up window are dropped. The median is reported for each phase. |
 | Bufferbloat | Grade from the worse of the two loaded medians minus the idle ping: under 30 ms A, under 60 ms B, under 200 ms C, otherwise D. |
 
-The server's city and data-centre code come from the `cf-meta-city` /
-`cf-meta-colo` response headers (or the plain `city` / `colo` ones Cloudflare
-actually sends) and are shown as "Server: Madrid (MAD)".
+The server is named by its data-centre code, the `colo` (or `cf-meta-colo`)
+response header, and shown as "Server: Madrid (MAD)" through a table of common
+codes in [`ColoNames.kt`](app/src/main/kotlin/com/fabriquefutur/speedyt/ui/ColoNames.kt).
+Cloudflare's `city` and `country` headers locate the viewer, not the server,
+so they are never shown.
 The client IP address is never read, shown or stored.
 
 "What this connection handles" uses named thresholds in
