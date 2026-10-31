@@ -22,6 +22,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.tv.material3.Text
 import com.fabriquefutur.speedyt.R
 import com.fabriquefutur.speedyt.analysis.BufferbloatGrade
@@ -32,6 +33,9 @@ import com.fabriquefutur.speedyt.analysis.bufferbloat
 import com.fabriquefutur.speedyt.analysis.handles
 import com.fabriquefutur.speedyt.analysis.tips
 import com.fabriquefutur.speedyt.engine.SpeedTestResult
+
+/** Smaller than [Type.Hero] so the whole results screen fits a 1080p TV without scrolling. */
+private val ResultHero = Type.Hero.copy(fontSize = 56.sp)
 
 @Composable
 fun ResultsScreen(
@@ -53,7 +57,7 @@ fun ResultsScreen(
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
             .padding(horizontal = SafeHorizontal, vertical = SafeVertical),
-        verticalArrangement = Arrangement.spacedBy(12.dp),
+        verticalArrangement = Arrangement.spacedBy(8.dp),
     ) {
         Row(verticalAlignment = Alignment.CenterVertically) {
             Column(Modifier.weight(1f)) {
@@ -99,7 +103,7 @@ fun ResultsScreen(
             horizontalArrangement = Arrangement.spacedBy(12.dp),
         ) {
             FocusPanel(Modifier.weight(1f)) {
-                Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+                Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
                     Text(stringResource(R.string.handles_title), style = Type.Section)
                     ValueRow(stringResource(R.string.handles_4k), handles.streams4k.toString())
                     ValueRow(stringResource(R.string.handles_1080p), handles.streams1080p.toString())
@@ -140,7 +144,7 @@ private fun HeroCard(label: String, number: String, unit: String, color: Color, 
     FocusPanel(modifier) {
         Column {
             Text(label, style = Type.Section)
-            NumberWithUnit(number, unit, Type.Hero, color)
+            NumberWithUnit(number, unit, ResultHero, color)
         }
     }
 }
@@ -165,7 +169,7 @@ private fun BufferbloatCard(grade: BufferbloatGrade?, modifier: Modifier) {
                 Text("–", style = Type.Metric)
             } else {
                 Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(12.dp)) {
-                    Text(grade.name, style = Type.Hero.copy(), color = SpeedytColors.grade(grade))
+                    Text(grade.name, style = ResultHero, color = SpeedytColors.grade(grade))
                     Text(
                         stringResource(
                             when (grade) {
@@ -194,7 +198,7 @@ private fun ValueRow(label: String, value: String, valueColor: Color = SpeedytCo
 @Composable
 private fun ConnectionPanel(connection: ConnectionInfo) {
     val unknown = stringResource(R.string.unknown_value)
-    Column(verticalArrangement = Arrangement.spacedBy(6.dp)) {
+    Column(verticalArrangement = Arrangement.spacedBy(2.dp)) {
         Text(stringResource(R.string.connection_title), style = Type.Section)
         ValueRow(stringResource(R.string.connection_type), kindText(connection.kind))
         if (connection.kind == ConnectionKind.WIFI) {
