@@ -1,6 +1,7 @@
 package com.fabriquefutur.speedyt.ui
 
 import android.app.Application
+import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
 import com.fabriquefutur.speedyt.analysis.ConnectionInfo
@@ -89,8 +90,10 @@ class SpeedtestViewModel(app: Application) : AndroidViewModel(app) {
             } catch (e: CancellationException) {
                 throw e
             } catch (e: SpeedTestException) {
+                Log.w(TAG, "Test failed: ${e.kind}", e.cause)
                 _state.update { it.copy(screen = Screen.HOME, error = e.kind) }
             } catch (e: Exception) {
+                Log.w(TAG, "Test failed", e)
                 _state.update { it.copy(screen = Screen.HOME, error = ErrorKind.FAILED) }
             }
         }
@@ -112,5 +115,9 @@ class SpeedtestViewModel(app: Application) : AndroidViewModel(app) {
 
     override fun onCleared() {
         job?.cancel()
+    }
+
+    private companion object {
+        const val TAG = "Speedyt"
     }
 }

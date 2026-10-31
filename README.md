@@ -26,13 +26,14 @@ The test talks to Cloudflare's public speed-test endpoints,
 | Stage | What happens |
 |---|---|
 | Idle latency | 1 warm-up request (opens the connection, not counted), then 20 requests of `__down?bytes=0`. Time from sending the request to the first response byte. Reported: median (ping) and jitter, the mean absolute difference of consecutive samples. |
-| Download | 6 parallel HTTP/1.1 connections stream 100 MB requests for 10 s. Bytes are counted as they arrive and sampled 4 times a second. The first 2 s are dropped as warm-up; the result is the rate over the remaining 8 s. |
+| Download | 6 parallel HTTP/1.1 connections stream 50 MB requests for 10 s. Bytes are counted as they arrive and sampled 4 times a second. The first 2 s are dropped as warm-up; the result is the rate over the remaining 8 s. |
 | Upload | The same, with 6 parallel POSTs of 25 MB of random bytes for 10 s. |
 | Loaded latency | While download runs, and again while upload runs, a separate connection keeps probing latency about 5 times a second. Probes in the warm-up window are dropped. The median is reported for each phase. |
 | Bufferbloat | Grade from the worse of the two loaded medians minus the idle ping: under 30 ms A, under 60 ms B, under 200 ms C, otherwise D. |
 
-The server's city and data-centre code come from the `cf-meta-city` and
-`cf-meta-colo` response headers and are shown as "Server: Madrid (MAD)".
+The server's city and data-centre code come from the `cf-meta-city` /
+`cf-meta-colo` response headers (or the plain `city` / `colo` ones Cloudflare
+actually sends) and are shown as "Server: Madrid (MAD)".
 The client IP address is never read, shown or stored.
 
 "What this connection handles" uses named thresholds in

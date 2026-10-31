@@ -103,11 +103,15 @@ class CloudflareTransport(
         if (!response.isSuccessful) throw HttpStatusException(response.code)
     }
 
-    /** Only the location headers; the client IP header is never read. */
+    /**
+     * Only the location headers; the client IP header is never read. Cloudflare
+     * sends them as `city` / `colo` / `country` and lists the `cf-meta-*` names
+     * as the CORS-exposed ones, so both spellings are accepted.
+     */
     private fun serverOf(response: Response): ServerInfo? {
-        val city = response.header("cf-meta-city")
-        val colo = response.header("cf-meta-colo")
-        val country = response.header("cf-meta-country")
+        val city = response.header("cf-meta-city") ?: response.header("city")
+        val colo = response.header("cf-meta-colo") ?: response.header("colo")
+        val country = response.header("cf-meta-country") ?: response.header("country")
         if (city == null && colo == null && country == null) return null
         return ServerInfo(city, colo, country)
     }

@@ -47,8 +47,11 @@ data class EngineConfig(
     /** How often a transfer phase publishes a live number. */
     val tickMillis: Long = 250,
     val loadedPingIntervalMillis: Long = 200,
-    /** Size asked of one download request; a worker starts another when it ends. */
-    val downloadRequestBytes: Long = 100_000_000,
+    /**
+     * Size asked of one download request; a worker starts another when it ends.
+     * Cloudflare answers 403 from 100,000,000 bytes up, so stay well under it.
+     */
+    val downloadRequestBytes: Long = 50_000_000,
     /** Size of one upload request body. */
     val uploadRequestBytes: Long = 25_000_000,
     /** The live number is the average over this window. */
