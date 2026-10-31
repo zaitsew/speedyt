@@ -115,6 +115,15 @@ class SpeedTestEngineTest {
         }
     }
 
+    @Test fun connectionsThatAllDropMidPhaseFailTheTest() = runTest {
+        try {
+            engine(FakeTransport(uploadDropsAfterChunks = 5)).run()
+            fail("expected a failure")
+        } catch (e: SpeedTestException) {
+            assertEquals(ErrorKind.FAILED, e.kind)
+        }
+    }
+
     @Test fun serverIsNullWhenTheNetworkDoesNotSayWhere() = runTest {
         assertNull(engine(FakeTransport(server = null)).run().server)
     }

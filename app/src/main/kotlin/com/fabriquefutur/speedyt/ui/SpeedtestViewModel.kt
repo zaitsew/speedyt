@@ -53,7 +53,8 @@ class SpeedtestViewModel(app: Application) : AndroidViewModel(app) {
     fun start() {
         if (job?.isActive == true) return
         if (!connections.hasInternet()) {
-            _state.update { it.copy(error = ErrorKind.NO_NETWORK, connection = connections.read()) }
+            // Back to HOME, where the error shows: "Run again" is pressed on RESULTS.
+            _state.update { it.copy(screen = Screen.HOME, error = ErrorKind.NO_NETWORK, connection = connections.read()) }
             return
         }
         _state.update {

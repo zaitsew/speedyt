@@ -19,6 +19,8 @@ class FakeTransport(
     private val failWith: IOException? = null,
     /** Idle pings answered with these latencies, in order, before settling on [idleMs]. */
     private val idleScript: List<Long> = emptyList(),
+    /** Every upload sends this many chunks, then the connection drops. */
+    private val uploadDropsAfterChunks: Int? = null,
 ) : SpeedTransport {
     @Volatile private var downloading = 0
     @Volatile private var uploading = 0
@@ -53,10 +55,13 @@ class FakeTransport(
         if (down) downloading++ else uploading++
         try {
             var left = bytes
+            var sent = 0
             while (left > 0) {
+                if (!down && sent == uploadDropsAfterChunks) throw IOException("connection reset")
                 delay(chunkMillis)
                 onBytes(chunk)
                 left -= chunk
+                sent++
             }
         } finally {
             if (down) downloading-- else uploading--

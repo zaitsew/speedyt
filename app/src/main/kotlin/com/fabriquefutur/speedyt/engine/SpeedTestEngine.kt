@@ -106,6 +106,9 @@ class SpeedTestEngine(
         val liveWindowNanos = config.liveWindowMillis * NANOS_PER_MILLI
 
         val start = nanoClock()
+        // Every worker stopped on an error before the phase ended: the bytes so far
+        // describe a broken link, not its speed.
+        var allFailed = false
         snapshots += ByteSnapshot(start, 0)
         onProgress(base)
 
@@ -146,12 +149,16 @@ class SpeedTestEngine(
                         phaseFraction = ((now - start).toFloat() / phaseNanos).coerceIn(0f, 1f),
                     ),
                 )
-                if (now - start >= phaseNanos || workers.all { it.isCompleted }) break
+                if (now - start >= phaseNanos) break
+                if (workers.all { it.isCompleted }) {
+                    allFailed = true
+                    break
+                }
             }
             currentCoroutineContext().cancelChildren()
         }
 
-        if (total.get() == 0L) {
+        if (total.get() == 0L || allFailed) {
             val e = failure.get()
             throw SpeedTestException(classifyError(e), e)
         }
