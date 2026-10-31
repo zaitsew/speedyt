@@ -19,6 +19,7 @@ really uses.
 - **No ads. No accounts. No tracking.** Nothing leaves the TV except the speed-test traffic.
 
 ![Speedyt home screen](play/screenshots/en-US/01-home.png)
+![Speedyt results: download, upload, ping, jitter and bufferbloat grade](play/screenshots/en-US/03-results.png)
 
 ## Links
 
