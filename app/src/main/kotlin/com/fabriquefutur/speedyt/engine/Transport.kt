@@ -27,13 +27,15 @@ interface SpeedTransport {
 
 class HttpStatusException(val code: Int) : IOException("HTTP $code")
 
-enum class ErrorKind { NO_NETWORK, TIMEOUT, FAILED }
+/** [RATE_LIMITED]: the test server answered 429; Cloudflare caps how much one address may download per hour. */
+enum class ErrorKind { NO_NETWORK, TIMEOUT, RATE_LIMITED, FAILED }
 
 class SpeedTestException(val kind: ErrorKind, cause: Throwable?) :
     Exception("Speed test failed: $kind", cause)
 
 /** Maps a low-level failure to something the screen can explain in one sentence. */
 fun classifyError(t: Throwable?): ErrorKind = when (t) {
+    is HttpStatusException -> if (t.code == 429) ErrorKind.RATE_LIMITED else ErrorKind.FAILED
     is UnknownHostException, is ConnectException, is NoRouteToHostException -> ErrorKind.NO_NETWORK
     is SocketTimeoutException -> ErrorKind.TIMEOUT
     is InterruptedIOException -> ErrorKind.TIMEOUT

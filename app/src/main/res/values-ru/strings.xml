@@ -75,5 +75,6 @@
 
     <string name="error_no_network">Нет подключения к интернету. Проверьте сеть и попробуйте снова.</string>
     <string name="error_timeout">Время теста истекло. Проверьте соединение и попробуйте снова.</string>
+    <string name="error_rate_limited">Сервер теста ограничивает объём проверок для этого подключения. Подождите и попробуйте снова.</string>
     <string name="error_failed">Не удалось завершить тест. Попробуйте ещё раз.</string>
 </resources>

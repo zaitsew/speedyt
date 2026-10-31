@@ -115,6 +115,18 @@ class SpeedTestEngineTest {
         }
     }
 
+    @Test fun tooManyRequestsIsReportedAsRateLimited() = runTest {
+        // Cloudflare answers 429 with a Retry-After of about an hour once an address has downloaded enough.
+        try {
+            engine(FakeTransport(failWith = HttpStatusException(429))).run()
+            fail("expected a failure")
+        } catch (e: SpeedTestException) {
+            assertEquals(ErrorKind.RATE_LIMITED, e.kind)
+        }
+        assertEquals(ErrorKind.RATE_LIMITED, classifyError(HttpStatusException(429)))
+        assertEquals(ErrorKind.FAILED, classifyError(HttpStatusException(403)))
+    }
+
     @Test fun connectionsThatAllDropMidPhaseFailTheTest() = runTest {
         try {
             engine(FakeTransport(uploadDropsAfterChunks = 5)).run()

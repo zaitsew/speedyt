@@ -75,5 +75,6 @@
 
     <string name="error_no_network">No hay conexión a internet. Revisa la red e inténtalo de nuevo.</string>
     <string name="error_timeout">La prueba ha tardado demasiado. Revisa tu conexión e inténtalo de nuevo.</string>
+    <string name="error_rate_limited">El servidor de pruebas limita cuánto puede probar esta conexión. Espera un rato e inténtalo de nuevo.</string>
     <string name="error_failed">No se ha podido completar la prueba. Inténtalo de nuevo.</string>
 </resources>

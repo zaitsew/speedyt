@@ -67,6 +67,7 @@ fun HomeScreen(
                         when (error) {
                             ErrorKind.NO_NETWORK -> R.string.error_no_network
                             ErrorKind.TIMEOUT -> R.string.error_timeout
+                            ErrorKind.RATE_LIMITED -> R.string.error_rate_limited
                             ErrorKind.FAILED -> R.string.error_failed
                         },
                     ),

@@ -75,5 +75,6 @@
 
     <string name="error_no_network">No internet connection. Check the network and try again.</string>
     <string name="error_timeout">The test timed out. Check your connection and try again.</string>
+    <string name="error_rate_limited">The test server is limiting how much this connection can test. Wait a while and try again.</string>
     <string name="error_failed">The test could not finish. Try again.</string>
 </resources>
