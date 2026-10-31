@@ -107,13 +107,13 @@ Speedyt подскажет, если узкое место — сам телев
 
 ### Graphics
 
-All in `docs/play/`.
+All in `docs/play/`, drawn by `swift tools/make-banner.swift`.
 
 | asset | size | file |
 |---|---|---|
 | App icon | 512 × 512 PNG | `icon-512.png` |
-| Feature graphic | 1024 × 500 | `feature-graphic.png` |
-| Android TV banner | 1280 × 720 | `tv-banner.png` |
+| Feature graphic | 1024 × 500 | `feature-graphic-1024x500.png` |
+| Android TV banner | 1280 × 720 | `tv-banner-1280x720.png` |
 | TV screenshots | 1920 × 1080, 1–8 per language | `screenshots/<locale>/` |
 
 Phone screenshots are not needed: the app is TV-only (`leanback` required).
