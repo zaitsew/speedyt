@@ -62,3 +62,5 @@ exec < "$_tlg_in"
 rm -f "$_tlg_in"
 unset _tlg_home _tlg_rc _tlg_remote _tlg_in _tlg_want _tlg_got _tlg_l _tlg_lsha _tlg_r _tlg_rsha _tlg_range _tlg_one _tlg_legacy
 # <<< teyla leak gate
+# Then the same checks as CI would run, on this machine.
+exec "$(git rev-parse --show-toplevel)/check.sh"

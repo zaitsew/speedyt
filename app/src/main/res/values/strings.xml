@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Speedyt</string>
+    <string name="tagline">Ad-free internet speed test</string>
+    <string name="privacy_note">No ads. No tracking. Only the test traffic leaves this TV.</string>
+
+    <string name="start_test">Start test</string>
+    <string name="history">History</string>
+    <string name="run_again">Run again</string>
+    <string name="cancel">Cancel</string>
+    <string name="connected_via">Connected via %1$s</string>
+
+    <string name="unit_mbps">Mbps</string>
+    <string name="unit_ms">ms</string>
+
+    <string name="phase_latency">Measuring latency</string>
+    <string name="phase_download">Testing download</string>
+    <string name="phase_upload">Testing upload</string>
+    <string name="server_label">Server: %1$s</string>
+
+    <string name="results_title">Results</string>
+    <string name="download">Download</string>
+    <string name="upload">Upload</string>
+    <string name="ping">Ping</string>
+    <string name="jitter">Jitter</string>
+    <string name="ping_loaded_download">Ping while downloading</string>
+    <string name="ping_loaded_upload">Ping while uploading</string>
+    <string name="bufferbloat">Bufferbloat</string>
+    <string name="bufferbloat_a">Excellent: latency stays low under load</string>
+    <string name="bufferbloat_b">Good: a small delay under load</string>
+    <string name="bufferbloat_c">Fair: a noticeable delay under load</string>
+    <string name="bufferbloat_d">Poor: a heavy delay under load</string>
+
+    <string name="handles_title">What this connection handles</string>
+    <string name="handles_4k">4K streams at once</string>
+    <string name="handles_1080p">1080p streams at once</string>
+    <string name="handles_calls">HD video calls</string>
+    <string name="handles_gaming">Online gaming</string>
+    <string name="gaming_good">Good</string>
+    <string name="gaming_poor">Not ideal</string>
+
+    <string name="connection_title">Connection</string>
+    <string name="connection_type">Type</string>
+    <string name="connection_band">Band</string>
+    <string name="connection_signal">Signal</string>
+    <string name="connection_link">Link speed</string>
+    <string name="connection_ethernet">Ethernet</string>
+    <string name="connection_wifi">Wi-Fi</string>
+    <string name="connection_other">Other network</string>
+    <string name="connection_none">Not connected</string>
+    <string name="band_2_4">2.4 GHz</string>
+    <string name="band_5">5 GHz</string>
+    <string name="band_6">6 GHz</string>
+    <string name="signal_excellent">Excellent</string>
+    <string name="signal_good">Good</string>
+    <string name="signal_fair">Fair</string>
+    <string name="signal_weak">Weak</string>
+    <string name="signal_value">%1$d dBm · %2$s</string>
+    <string name="link_value">%1$d Mbps</string>
+    <string name="unknown_value">Unknown</string>
+
+    <string name="tips_title">Tips</string>
+    <string name="tip_5ghz">You are on a 2.4 GHz Wi-Fi network. Connect the TV to the 5 GHz network for faster, steadier speeds.</string>
+    <string name="tip_weak_signal">The Wi-Fi signal is weak (%1$d dBm). Move the router or the TV closer, or use an Ethernet cable.</string>
+    <string name="tip_ethernet_100">Many TVs have a 100 Mbps Ethernet port. This may be the TV’s limit, not your line.</string>
+    <string name="tip_wifi_link">The Wi-Fi link (%1$d Mbps) is the bottleneck: it is less than twice your measured download speed.</string>
+
+    <string name="history_title">History</string>
+    <string name="history_empty">No tests yet. Run one and it shows up here.</string>
+    <string name="history_col_date">Date</string>
+    <string name="history_col_download">Download</string>
+    <string name="history_col_upload">Upload</string>
+    <string name="history_col_ping">Ping</string>
+    <string name="history_col_connection">Connection</string>
+
+    <string name="error_no_network">No internet connection. Check the network and try again.</string>
+    <string name="error_timeout">The test timed out. Check your connection and try again.</string>
+    <string name="error_rate_limited">The test server is limiting how much this connection can test. Wait a while and try again.</string>
+    <string name="error_failed">The test could not finish. Try again.</string>
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Speedyt</string>
+    <string name="tagline">Тест скорости интернета без рекламы</string>
+    <string name="privacy_note">Без рекламы и слежки. Из телевизора уходит только трафик самого теста.</string>
+
+    <string name="start_test">Начать тест</string>
+    <string name="history">История</string>
+    <string name="run_again">Повторить тест</string>
+    <string name="cancel">Отмена</string>
+    <string name="connected_via">Подключение: %1$s</string>
+
+    <string name="unit_mbps">Мбит/с</string>
+    <string name="unit_ms">мс</string>
+
+    <string name="phase_latency">Измеряем задержку</string>
+    <string name="phase_download">Проверяем загрузку</string>
+    <string name="phase_upload">Проверяем выгрузку</string>
+    <string name="server_label">Сервер: %1$s</string>
+
+    <string name="results_title">Результаты</string>
+    <string name="download">Загрузка</string>
+    <string name="upload">Выгрузка</string>
+    <string name="ping">Пинг</string>
+    <string name="jitter">Джиттер</string>
+    <string name="ping_loaded_download">Пинг при загрузке</string>
+    <string name="ping_loaded_upload">Пинг при выгрузке</string>
+    <string name="bufferbloat">Bufferbloat</string>
+    <string name="bufferbloat_a">Отлично: под нагрузкой задержка почти не растёт</string>
+    <string name="bufferbloat_b">Хорошо: под нагрузкой задержка растёт немного</string>
+    <string name="bufferbloat_c">Средне: под нагрузкой задержка заметно растёт</string>
+    <string name="bufferbloat_d">Плохо: под нагрузкой задержка сильно растёт</string>
+
+    <string name="handles_title">Что тянет это соединение</string>
+    <string name="handles_4k">Потоков 4K одновременно</string>
+    <string name="handles_1080p">Потоков 1080p одновременно</string>
+    <string name="handles_calls">HD-видеозвонки</string>
+    <string name="handles_gaming">Онлайн-игры</string>
+    <string name="gaming_good">Хорошо</string>
+    <string name="gaming_poor">Не идеально</string>
+
+    <string name="connection_title">Подключение</string>
+    <string name="connection_type">Тип</string>
+    <string name="connection_band">Диапазон</string>
+    <string name="connection_signal">Сигнал</string>
+    <string name="connection_link">Скорость линка</string>
+    <string name="connection_ethernet">Ethernet</string>
+    <string name="connection_wifi">Wi-Fi</string>
+    <string name="connection_other">Другая сеть</string>
+    <string name="connection_none">Нет подключения</string>
+    <string name="band_2_4">2,4 ГГц</string>
+    <string name="band_5">5 ГГц</string>
+    <string name="band_6">6 ГГц</string>
+    <string name="signal_excellent">Отличный</string>
+    <string name="signal_good">Хороший</string>
+    <string name="signal_fair">Средний</string>
+    <string name="signal_weak">Слабый</string>
+    <string name="signal_value">%1$d дБм · %2$s</string>
+    <string name="link_value">%1$d Мбит/с</string>
+    <string name="unknown_value">Неизвестно</string>
+
+    <string name="tips_title">Советы</string>
+    <string name="tip_5ghz">Телевизор подключён к Wi-Fi на 2,4 ГГц. Переключитесь на сеть 5 ГГц: она быстрее и стабильнее.</string>
+    <string name="tip_weak_signal">Слабый сигнал Wi-Fi (%1$d дБм). Поставьте роутер и телевизор ближе или подключите кабель Ethernet.</string>
+    <string name="tip_ethernet_100">Во многих телевизорах порт Ethernet рассчитан на 100 Мбит/с. Предел может быть в телевизоре, а не в вашей линии.</string>
+    <string name="tip_wifi_link">Узкое место — Wi-Fi-соединение (%1$d Мбит/с): оно меньше чем вдвое быстрее измеренной загрузки.</string>
+
+    <string name="history_title">История</string>
+    <string name="history_empty">Тестов пока нет. Запустите тест, и он появится здесь.</string>
+    <string name="history_col_date">Дата</string>
+    <string name="history_col_download">Загрузка</string>
+    <string name="history_col_upload">Выгрузка</string>
+    <string name="history_col_ping">Пинг</string>
+    <string name="history_col_connection">Соединение</string>
+
+    <string name="error_no_network">Нет подключения к интернету. Проверьте сеть и попробуйте снова.</string>
+    <string name="error_timeout">Время теста истекло. Проверьте соединение и попробуйте снова.</string>
+    <string name="error_rate_limited">Сервер теста ограничивает объём проверок для этого подключения. Подождите и попробуйте снова.</string>
+    <string name="error_failed">Не удалось завершить тест. Попробуйте ещё раз.</string>
+</resources>

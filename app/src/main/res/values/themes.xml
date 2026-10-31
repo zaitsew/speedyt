@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="speedyt_background">#0B0F14</color>
+    <color name="ic_launcher_background">#0F172A</color>
+
+    <style name="Theme.Speedyt" parent="@android:style/Theme.Material.NoActionBar">
+        <item name="android:windowBackground">@color/speedyt_background</item>
+        <item name="android:colorBackground">@color/speedyt_background</item>
+        <item name="android:statusBarColor">@color/speedyt_background</item>
+        <item name="android:navigationBarColor">@color/speedyt_background</item>
+    </style>
+</resources>
