@@ -20,7 +20,7 @@ has no SDK besides AndroidX, Compose for TV and OkHttp.
 - Build: `./gradlew :app:bundleRelease` → `app/build/outputs/bundle/release/app-release.aab`.
   `versionCode` rises with every upload.
 - Upload: `~/ops/bin/play upload --package com.fabriquefutur.speedyt --aab <aab> --track internal`.
-  The service account `play-publisher@fabrique-accounts.iam.gserviceaccount.com`
+  The service account `play-publisher@<gcp-project>.iam.gserviceaccount.com`
   needs "Release to testing tracks" (and "Manage store presence" for listing
   images) on this app: Play Console → Users and permissions.
 
@@ -155,7 +155,7 @@ them, and reads back only the server location headers.
 
 ## 6. Release order
 
-1. Internal testing track, tester list with Ivan's Google account (the one signed in on the TV).
-2. Ivan opens the opt-in link once, then installs from the TV's Play Store.
+1. Internal testing track, tester list with the owner's Google account (the one signed in on the TV).
+2. The owner opens the opt-in link once, then installs from the TV's Play Store.
 3. Production, after a day of use without a blocking problem. Play reviews the
    first production release and the TV form factor (allow up to 7 days).
