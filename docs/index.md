@@ -18,7 +18,7 @@ really uses.
 - **English, Spanish and Russian.**
 - **No ads. No accounts. No tracking.** Nothing leaves the TV except the speed-test traffic.
 
-![Speedyt results screen](play/screenshots/en-US/03-results.png)
+![Speedyt home screen](play/screenshots/en-US/01-home.png)
 
 ## Links
 
