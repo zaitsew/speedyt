@@ -39,71 +39,12 @@ Languages: `en-US` (default), `es-ES`, `ru-RU` — the app speaks the same three
 Category **Tools**. Contact email: the Fabrique Futur support address. Website:
 `https://zaitsew.github.io/speedyt/`.
 
-### en-US
+### Texts
 
-- **Name (≤ 30):** `Speedyt: TV Speed Test`
-- **Short description (≤ 80):** `Ad-free speed test for your TV: can your line handle 4K, calls and gaming?`
-- **Full description:**
-
-```
-Speedyt measures the internet connection of your TV itself, not your phone's.
-
-Press Start with the remote. In about 30 seconds you see:
-• Download and upload speed
-• Ping, jitter and latency under load (bufferbloat grade A–D)
-• What your line handles: how many 4K and 1080p streams at once, HD video calls, online gaming
-• Your TV's connection: Ethernet or Wi-Fi, the Wi-Fi band (2.4, 5 or 6 GHz), signal strength and link speed
-
-Speedyt also tells you when the TV is the bottleneck. Examples: a weak Wi-Fi signal, the 2.4 GHz band, or an Ethernet port limited to 100 Mbps, which many TVs have.
-
-Your last 50 results stay on the TV, so you can compare Wi-Fi and cable, or morning and evening.
-
-No ads. No account. No tracking. The test runs against Cloudflare's global network, and nothing else leaves your TV. Speedyt is open source: github.com/zaitsew/speedyt
-```
-
-### es-ES
-
-- **Nombre:** `Speedyt: test de velocidad TV`
-- **Descripción breve:** `Test de velocidad sin anuncios para tu TV: ¿aguanta 4K, videollamadas y juegos?`
-- **Descripción completa:**
-
-```
-Speedyt mide la conexión a internet de tu propio televisor, no la de tu móvil.
-
-Pulsa Empezar con el mando. En unos 30 segundos verás:
-• Velocidad de descarga y de subida
-• Ping, jitter y latencia bajo carga (nota de bufferbloat de la A a la D)
-• Lo que aguanta tu línea: cuántas emisiones 4K y 1080p a la vez, videollamadas HD, juegos online
-• La conexión de tu TV: Ethernet o Wi-Fi, la banda Wi-Fi (2,4, 5 o 6 GHz), la intensidad de la señal y la velocidad del enlace
-
-Speedyt también te avisa cuando el cuello de botella es el televisor: una señal Wi-Fi débil, la banda de 2,4 GHz o un puerto Ethernet de 100 Mbps, algo habitual en muchos televisores.
-
-Tus últimos 50 resultados se guardan en la TV, para comparar Wi-Fi y cable, o la mañana y la noche.
-
-Sin anuncios. Sin cuenta. Sin rastreo. La prueba se hace contra la red global de Cloudflare y nada más sale de tu televisor. Speedyt es de código abierto: github.com/zaitsew/speedyt
-```
-
-### ru-RU
-
-- **Название:** `Speedyt: тест скорости для ТВ`
-- **Краткое описание:** `Тест скорости для телевизора без рекламы: потянет ли линия 4K, звонки и игры?`
-- **Полное описание:**
-
-```
-Speedyt измеряет интернет самого телевизора, а не телефона.
-
-Нажмите «Старт» на пульте. Примерно через 30 секунд вы увидите:
-• Скорость загрузки и отдачи
-• Пинг, джиттер и задержку под нагрузкой (оценка bufferbloat от A до D)
-• Что потянет ваша линия: сколько потоков 4K и 1080p одновременно, видеозвонки в HD, онлайн-игры
-• Подключение телевизора: Ethernet или Wi-Fi, диапазон Wi-Fi (2,4, 5 или 6 ГГц), уровень сигнала и скорость соединения
-
-Speedyt подскажет, если узкое место — сам телевизор: слабый сигнал Wi-Fi, диапазон 2,4 ГГц или порт Ethernet на 100 Мбит/с, который стоит во многих телевизорах.
-
-Последние 50 результатов хранятся на телевизоре: можно сравнить Wi-Fi и кабель, утро и вечер.
-
-Без рекламы. Без аккаунта. Без слежки. Тест идёт через глобальную сеть Cloudflare, больше ничего с телевизора не уходит. Исходный код Speedyt открыт: github.com/zaitsew/speedyt
-```
+One folder per language in [`docs/play/listing/`](play/listing/), in the
+fastlane-supply layout: `title.txt` (≤ 30), `short_description.txt` (≤ 80),
+`full_description.txt` (≤ 4000). Those files are the source of truth; edit
+them, not a copy.
 
 ### Graphics
 
@@ -117,6 +58,10 @@ All in `docs/play/`, drawn by `swift tools/make-banner.swift`.
 | TV screenshots | 1920 × 1080, 1–8 per language | `screenshots/<locale>/` |
 
 Phone screenshots are not needed: the app is TV-only (`leanback` required).
+
+Upload texts and graphics for every language with `tools/play-listing.sh`
+(add `--dry-run` first). It assembles the fastlane layout and calls
+`~/ops/bin/play listing`; nothing goes through the Console by hand.
 
 ## 4. Form factors
 

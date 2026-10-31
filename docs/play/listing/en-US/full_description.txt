@@ -1,0 +1,13 @@
+Speedyt measures the internet connection of your TV itself, not your phone's.
+
+Press Start with the remote. In about 30 seconds you see:
+• Download and upload speed
+• Ping, jitter and latency under load (bufferbloat grade A–D)
+• What your line handles: how many 4K and 1080p streams at once, HD video calls, online gaming
+• Your TV's connection: Ethernet or Wi-Fi, the Wi-Fi band (2.4, 5 or 6 GHz), signal strength and link speed
+
+Speedyt also tells you when the TV is the bottleneck. Examples: a weak Wi-Fi signal, the 2.4 GHz band, or an Ethernet port limited to 100 Mbps, which many TVs have.
+
+Your last 50 results stay on the TV, so you can compare Wi-Fi and cable, or morning and evening.
+
+No ads. No account. No tracking. The test runs against Cloudflare's global network, and nothing else leaves your TV. Speedyt is open source: github.com/zaitsew/speedyt

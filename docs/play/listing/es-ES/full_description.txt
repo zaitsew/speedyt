@@ -1,0 +1,13 @@
+Speedyt mide la conexión a internet de tu propio televisor, no la de tu móvil.
+
+Pulsa Empezar con el mando. En unos 30 segundos verás:
+• Velocidad de descarga y de subida
+• Ping, jitter y latencia bajo carga (nota de bufferbloat de la A a la D)
+• Lo que aguanta tu línea: cuántas emisiones 4K y 1080p a la vez, videollamadas HD, juegos online
+• La conexión de tu TV: Ethernet o Wi-Fi, la banda Wi-Fi (2,4, 5 o 6 GHz), la intensidad de la señal y la velocidad del enlace
+
+Speedyt también te avisa cuando el cuello de botella es el televisor: una señal Wi-Fi débil, la banda de 2,4 GHz o un puerto Ethernet de 100 Mbps, algo habitual en muchos televisores.
+
+Tus últimos 50 resultados se guardan en la TV, para comparar Wi-Fi y cable, o la mañana y la noche.
+
+Sin anuncios. Sin cuenta. Sin rastreo. La prueba se hace contra la red global de Cloudflare y nada más sale de tu televisor. Speedyt es de código abierto: github.com/zaitsew/speedyt
