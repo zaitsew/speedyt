@@ -157,11 +157,13 @@ class CloudflareTransport(
  * Upload bytes are counted when they are written to the socket, so whatever
  * waits in the kernel's send buffer is counted before it has left the device.
  * The kernel grows that buffer to several MB per connection, which overstates
- * upload. A fixed 256 KB buffer (Linux doubles it) keeps the error to about
- * 3 MB over six connections and still allows ~140 Mbps per connection at 30 ms.
+ * upload. A fixed 512 KB buffer (Linux doubles it) keeps the error under about
+ * 6 MB over six connections. It turns off autotuning, so it also caps upload:
+ * about 1.6 Gbps over six connections at 30 ms, about 480 Mbps at 100 ms.
+ * Cloudflare's nearest data centre is rarely farther than 30 ms.
  */
 private object SmallSendBufferSocketFactory : SocketFactory() {
-    private const val SEND_BUFFER_BYTES = 256 * 1024
+    private const val SEND_BUFFER_BYTES = 512 * 1024
     private val base = getDefault()
 
     private fun Socket.small(): Socket = apply { sendBufferSize = SEND_BUFFER_BYTES }
