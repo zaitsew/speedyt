@@ -97,7 +97,7 @@ class WifiTest {
 
 class TipsTest {
     private fun wifi(freq: Int, dbm: Int, link: Int?) =
-        ConnectionInfo(ConnectionKind.WIFI, wifiFrequencyMhz = freq, signalDbm = dbm, linkSpeedMbps = link)
+        ConnectionInfo(ConnectionKind.WIFI, wifiFrequencyMhz = freq, signalDbm = dbm, rxLinkMbps = link)
 
     @Test fun twoPointFourGhzSuggestsFiveGhz() =
         assertTrue(Tip.USE_5_GHZ in tips(wifi(2437, -50, 300), 50.0))
@@ -127,6 +127,16 @@ class TipsTest {
         assertTrue(Tip.WIFI_LINK_BOTTLENECK in tips(wifi(5180, -50, 300), 200.0)) // 300 < 400
         assertFalse(Tip.WIFI_LINK_BOTTLENECK in tips(wifi(5180, -50, 400), 200.0)) // 400 is not < 400
         assertFalse(Tip.WIFI_LINK_BOTTLENECK in tips(wifi(5180, -50, null), 200.0))
+    }
+
+    @Test fun theDownloadTipUsesTheReceiveRate() {
+        // A TV that sends at 866 but receives at 300 is limited on download.
+        val slowReceive = ConnectionInfo(ConnectionKind.WIFI, wifiFrequencyMhz = 5180, signalDbm = -50, rxLinkMbps = 300, txLinkMbps = 866)
+        assertTrue(Tip.WIFI_LINK_BOTTLENECK in tips(slowReceive, 200.0))
+        // Before Android 10 only one rate is known, and it stands in for both.
+        val txOnly = ConnectionInfo(ConnectionKind.WIFI, wifiFrequencyMhz = 5180, signalDbm = -50, txLinkMbps = 300)
+        assertEquals(300, txOnly.downloadLinkMbps)
+        assertTrue(Tip.WIFI_LINK_BOTTLENECK in tips(txOnly, 200.0))
     }
 
     @Test fun aGoodConnectionGetsNoTips() =
