@@ -131,12 +131,25 @@ fun ResultsScreen(
     }
 }
 
+/** "↓ 433 · ↑ 866 Mbps" when both rates are known, else the one there is. */
+@Composable
+private fun linkText(connection: ConnectionInfo): String? {
+    val rx = connection.rxLinkMbps
+    val tx = connection.txLinkMbps
+    return when {
+        rx != null && tx != null -> stringResource(R.string.link_pair, rx, tx)
+        tx != null -> stringResource(R.string.link_value, tx)
+        rx != null -> stringResource(R.string.link_value, rx)
+        else -> null
+    }
+}
+
 @Composable
 private fun tipText(tip: Tip, connection: ConnectionInfo): String = when (tip) {
     Tip.USE_5_GHZ -> stringResource(R.string.tip_5ghz)
     Tip.WEAK_SIGNAL -> stringResource(R.string.tip_weak_signal, connection.signalDbm ?: 0)
     Tip.ETHERNET_100_MBIT -> stringResource(R.string.tip_ethernet_100)
-    Tip.WIFI_LINK_BOTTLENECK -> stringResource(R.string.tip_wifi_link, connection.linkSpeedMbps ?: 0)
+    Tip.WIFI_LINK_BOTTLENECK -> stringResource(R.string.tip_wifi_link, connection.downloadLinkMbps ?: 0)
 }
 
 @Composable
@@ -209,7 +222,7 @@ private fun ConnectionPanel(connection: ConnectionInfo) {
             )
             ValueRow(
                 stringResource(R.string.connection_link),
-                connection.linkSpeedMbps?.let { stringResource(R.string.link_value, it) } ?: unknown,
+                linkText(connection) ?: unknown,
             )
         }
     }

@@ -69,9 +69,15 @@ data class ConnectionInfo(
     val kind: ConnectionKind,
     val wifiFrequencyMhz: Int? = null,
     val signalDbm: Int? = null,
-    val linkSpeedMbps: Int? = null,
+    /** Wi-Fi receive rate, router to device: the ceiling for download. Android 10+ only. */
+    val rxLinkMbps: Int? = null,
+    /** Wi-Fi transmit rate, device to router: the ceiling for upload. */
+    val txLinkMbps: Int? = null,
 ) {
     val band: WifiBand? get() = wifiBand(wifiFrequencyMhz)
+
+    /** The rate that limits download: receive when known, else the only rate older Android gives. */
+    val downloadLinkMbps: Int? get() = rxLinkMbps ?: txLinkMbps
 }
 
 enum class Tip { USE_5_GHZ, WEAK_SIGNAL, ETHERNET_100_MBIT, WIFI_LINK_BOTTLENECK }
@@ -83,7 +89,7 @@ fun tips(connection: ConnectionInfo, downloadMbps: Double): List<Tip> = buildLis
             if (connection.band == WifiBand.GHZ_2_4) add(Tip.USE_5_GHZ)
             val dbm = connection.signalDbm
             if (dbm != null && dbm < Thresholds.SIGNAL_FAIR_DBM) add(Tip.WEAK_SIGNAL)
-            val link = connection.linkSpeedMbps
+            val link = connection.downloadLinkMbps
             if (link != null && link > 0 && link < Thresholds.WIFI_LINK_FACTOR * downloadMbps) {
                 add(Tip.WIFI_LINK_BOTTLENECK)
             }

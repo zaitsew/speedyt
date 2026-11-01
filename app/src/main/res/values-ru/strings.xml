@@ -57,6 +57,7 @@
     <string name="signal_weak">Слабый</string>
     <string name="signal_value">%1$d дБм · %2$s</string>
     <string name="link_value">%1$d Мбит/с</string>
+    <string name="link_pair">↓ %1$d · ↑ %2$d Мбит/с</string>
     <string name="unknown_value">Неизвестно</string>
 
     <string name="tips_title">Советы</string>

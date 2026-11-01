@@ -1,6 +1,9 @@
 package com.fabriquefutur.speedyt.engine
 
+import java.net.InetAddress
+import java.net.Socket
 import java.util.concurrent.TimeUnit
+import javax.net.SocketFactory
 import kotlin.random.Random
 import kotlinx.coroutines.CoroutineStart
 import kotlinx.coroutines.Dispatchers
@@ -30,7 +33,7 @@ class CloudflareTransport(
 ) : SpeedTransport {
 
     private val pingClient = newClient(ConnectionPool(1, 5, TimeUnit.MINUTES))
-    private val transferClient = newClient(ConnectionPool(16, 30, TimeUnit.SECONDS))
+    private val transferClient = newClient(ConnectionPool(16, 30, TimeUnit.SECONDS), SmallSendBufferSocketFactory)
 
     // One random block, reused: the body only has to be incompressible.
     private val uploadBlock = Random.Default.nextBytes(CHUNK)
@@ -139,7 +142,8 @@ class CloudflareTransport(
         const val CHUNK = 64 * 1024
         const val USER_AGENT = "Speedyt/0.1 (+https://github.com/zaitsew/speedyt)"
 
-        fun newClient(pool: ConnectionPool): OkHttpClient = OkHttpClient.Builder()
+        fun newClient(pool: ConnectionPool, sockets: SocketFactory = SocketFactory.getDefault()): OkHttpClient = OkHttpClient.Builder()
+            .socketFactory(sockets)
             .protocols(listOf(Protocol.HTTP_1_1))
             .connectionPool(pool)
             .connectTimeout(8, TimeUnit.SECONDS)
@@ -147,4 +151,26 @@ class CloudflareTransport(
             .writeTimeout(10, TimeUnit.SECONDS)
             .build()
     }
+}
+
+/**
+ * Upload bytes are counted when they are written to the socket, so whatever
+ * waits in the kernel's send buffer is counted before it has left the device.
+ * The kernel grows that buffer to several MB per connection, which overstates
+ * upload. A fixed 256 KB buffer (Linux doubles it) keeps the error to about
+ * 3 MB over six connections and still allows ~140 Mbps per connection at 30 ms.
+ */
+private object SmallSendBufferSocketFactory : SocketFactory() {
+    private const val SEND_BUFFER_BYTES = 256 * 1024
+    private val base = getDefault()
+
+    private fun Socket.small(): Socket = apply { sendBufferSize = SEND_BUFFER_BYTES }
+
+    override fun createSocket(): Socket = base.createSocket().small()
+    override fun createSocket(host: String?, port: Int): Socket = base.createSocket(host, port).small()
+    override fun createSocket(host: String?, port: Int, localHost: InetAddress?, localPort: Int): Socket =
+        base.createSocket(host, port, localHost, localPort).small()
+    override fun createSocket(host: InetAddress?, port: Int): Socket = base.createSocket(host, port).small()
+    override fun createSocket(address: InetAddress?, port: Int, localAddress: InetAddress?, localPort: Int): Socket =
+        base.createSocket(address, port, localAddress, localPort).small()
 }

@@ -57,6 +57,7 @@
     <string name="signal_weak">Débil</string>
     <string name="signal_value">%1$d dBm · %2$s</string>
     <string name="link_value">%1$d Mbps</string>
+    <string name="link_pair">↓ %1$d · ↑ %2$d Mbps</string>
     <string name="unknown_value">Desconocido</string>
 
     <string name="tips_title">Consejos</string>

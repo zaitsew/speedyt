@@ -45,8 +45,18 @@ class ConnectionReader(context: Context) {
             kind = ConnectionKind.WIFI,
             wifiFrequencyMhz = info.frequency.takeIf { it > 0 },
             signalDbm = info.rssi.takeIf { it in -126..0 },
-            linkSpeedMbps = info.linkSpeed.takeIf { it > 0 },
+            rxLinkMbps = rxLink(info),
+            txLinkMbps = txLink(info),
         )
+    }
+
+    // Before Android 10 there is one rate, the transmit rate; receive is unknown.
+    private fun rxLink(info: WifiInfo): Int? =
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) info.rxLinkSpeedMbps.takeIf { it > 0 } else null
+
+    private fun txLink(info: WifiInfo): Int? {
+        val tx = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) info.txLinkSpeedMbps else info.linkSpeed
+        return tx.takeIf { it > 0 }
     }
 
     @Suppress("DEPRECATION")
