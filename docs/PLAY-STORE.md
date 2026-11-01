@@ -1,7 +1,7 @@
 # Google Play — what to paste
 
 Everything Play Console asks for before Speedyt's first release, in the order it
-asks. Written for **0.1.0 (1)**. The answers come from the code: the manifest asks
+asks. Written for **0.1.0 (1)**; the release order in section 6 was used for 0.1.1 (2). The answers come from the code: the manifest asks
 for `INTERNET`, `ACCESS_NETWORK_STATE` and `ACCESS_WIFI_STATE` only, and the app
 has no SDK besides AndroidX, Compose for TV and OkHttp.
 
@@ -107,5 +107,23 @@ them, and reads back only the server location headers.
 
 1. Internal testing track, tester list with the owner's Google account (the one signed in on the TV).
 2. The owner opens the opt-in link once, then installs from the TV's Play Store.
-3. Production, after a day of use without a blocking problem. Play reviews the
-   first production release and the TV form factor (allow up to 7 days).
+3. Production, in the Console. The service account has no production permission
+   (403), and a draft app accepts only `--status draft` over the API, so it stays
+   on the internal track:
+   - Production → Create new release → Add from library → pick the bundle.
+   - Set the release name and notes, then Next.
+   - A first release fails with "No countries or regions": Countries / regions →
+     select all → Save (178 today). Then return to the release and Save.
+   - Publishing overview → Submit changes for review → confirm.
+4. Quick checks run for up to 14 minutes, then Play reviews the first production
+   release (allow up to 7 days). Managed publishing is off, so an approved release
+   goes live on its own.
+
+The Android TV opt-in applies when the review is sent: it leaves the list and shows
+Active under Advanced settings → Form factors.
+
+## 7. Submission history
+
+| date | version | state |
+|---|---|---|
+| 2026-11-01 | 0.1.1 (2) | first production release, sent for review, full rollout |
