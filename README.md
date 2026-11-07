@@ -44,6 +44,11 @@ The client IP address is never read, shown or stored.
 stream, 4 Mbps both ways per HD video call, and for gaming a ping under 50 ms
 with jitter under 20 ms.
 
+The Connection card shows the network type, the Wi-Fi band and signal, and the
+Wi-Fi link rates: receive and send (`↓ 433 · ↑ 866 Mbps`; Android 10 or newer
+reports both, older versions show only the send rate). The "Wi-Fi link is the
+bottleneck" tip compares your download speed against the receive rate.
+
 Numbers from a TV are real but not lab-grade. Wi-Fi, the TV's own network
 chip and the distance to the nearest Cloudflare data centre all show up in
 the result. That is the point: it measures what the TV gets.
@@ -79,4 +84,4 @@ git config core.hooksPath .githooks     # run ./check.sh before every push
 
 ## License
 
-MIT, copyright 2026 Ivan Zaitsev. See [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).

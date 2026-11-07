@@ -111,7 +111,7 @@ them, and reads back only the server location headers.
    (403), and a draft app accepts only `--status draft` over the API, so it stays
    on the internal track:
    - Production → Create new release → Add from library → pick the bundle.
-   - Set the release name and notes, then Next.
+   - Set the release name and paste the notes from `docs/whats-new/<version>/<lang>.txt`, then Next.
    - A first release fails with "No countries or regions": Countries / regions →
      select all → Save (178 today). Then return to the release and Save.
    - Publishing overview → Submit changes for review → confirm.
@@ -121,6 +121,22 @@ them, and reads back only the server location headers.
 
 The Android TV opt-in applies when the review is sent: it leaves the list and shows
 Active under Advanced settings → Form factors.
+
+### Release notes
+
+Every release carries its own notes, kept in the repo: one file per listing language in
+`docs/whats-new/<version>/` (`en-US.txt`, `es-ES.txt`, `ru-RU.txt`, at most 500 characters each),
+written before the bundle goes up. On a testing track, pass `--notes-dir docs/whats-new/<version>/`
+to `~/ops/bin/play`. For a production release made in the Console (step 3 above), paste the same
+files. Write one line per change a user would notice, from the PRs merged since the last release.
+Never use a generic line such as "Bug fixes and improvements" (POLICY section 15).
+
+### Screenshots to retake
+
+The TV screenshots (`bd9b3d1`, 2026-10-31) and the phone-slot screenshots (`19ce3aa`, 2026-11-01)
+were taken before `5032a6c` (0.1.1), which changed the Connection card on the results screen: the
+Link row now shows receive and send rates. Retake the results screenshot in every locale
+(`en-US`, `es-ES`, `ru-RU`) before the next listing upload, then run `tools/play-listing.sh`.
 
 ## 7. Submission history
 
