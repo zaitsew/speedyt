@@ -6,7 +6,10 @@ in plain words what the connection can handle: how many 4K streams, HD video
 calls, and whether it is good for gaming. No ads, no accounts, no tracking.
 
 Built for the living room: dark theme, large type, full D-pad control.
-English, Spanish and Russian.
+English, Spanish and Russian. It runs on Android 8.0 (API 26) and newer.
+
+Google Play: version 0.1.1 (2) went to production review on 2026-11-01
+([`docs/PLAY-STORE.md`](docs/PLAY-STORE.md)). Until you find it in the TV's Play Store, build it as shown below.
 
 ## Quick start
 
@@ -27,7 +30,7 @@ The test talks to Cloudflare's public speed-test endpoints,
 |---|---|
 | Idle latency | 1 warm-up request (opens the connection, not counted), then 20 requests of `__down?bytes=0`. Time from sending the request to the first response byte. Reported: median (ping) and jitter, the mean absolute difference of consecutive samples. |
 | Download | 6 parallel HTTP/1.1 connections stream 50 MB requests for 10 s. Bytes are counted as they arrive and sampled 4 times a second. The first 2 s are dropped as warm-up; the result is the rate over the remaining 8 s. |
-| Upload | The same, with 6 parallel POSTs of 25 MB of random bytes for 10 s. |
+| Upload | The same, with 6 parallel POSTs of 25 MB each (one random block, repeated) for 10 s. |
 | Loaded latency | While download runs, and again while upload runs, a separate connection keeps probing latency about 5 times a second. Probes in the warm-up window are dropped. The median is reported for each phase. |
 | Bufferbloat | Grade from the worse of the two loaded medians minus the idle ping: under 30 ms A, under 60 ms B, under 200 ms C, otherwise D. |
 
@@ -46,8 +49,16 @@ with jitter under 20 ms.
 
 The Connection card shows the network type, the Wi-Fi band and signal, and the
 Wi-Fi link rates: receive and send (`↓ 433 · ↑ 866 Mbps`; Android 10 or newer
-reports both, older versions show only the send rate). The "Wi-Fi link is the
-bottleneck" tip compares your download speed against the receive rate.
+reports both, older versions show only the send rate). Tips appear only when
+they apply:
+
+- switch to 5 GHz, when the TV is on 2.4 GHz;
+- weak signal (below -70 dBm);
+- a download of 85 to 97 Mbps on Ethernet, which points at a 100 Mbps port;
+- "Wi-Fi link is the bottleneck", when the link rate is under 2 times the
+  download speed. It uses the receive rate, or the send rate on older Android.
+
+The History screen lists the last 50 results.
 
 Numbers from a TV are real but not lab-grade. Wi-Fi, the TV's own network
 chip and the distance to the nearest Cloudflare data centre all show up in
@@ -74,6 +85,7 @@ git config core.hooksPath .githooks     # run ./check.sh before every push
 - `analysis/` holds the judgement: handles, bufferbloat grade, Wi-Fi band and signal, tips.
 - Strings are in `res/values` (English), `values-es` and `values-ru`.
 - `tools/make-banner.swift` redraws the TV banner (macOS).
+- `docs/play/` holds the Play listing texts, graphics and screenshots in three languages.
 
 ### Release build
 
@@ -85,3 +97,5 @@ git config core.hooksPath .githooks     # run ./check.sh before every push
 ## License
 
 MIT. See [LICENSE](LICENSE).
+
+<!-- teyla:reviewed 2026-11-13 -->
