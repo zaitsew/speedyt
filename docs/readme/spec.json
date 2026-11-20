@@ -1,0 +1,26 @@
+{
+  "name": "Speedyt",
+  "tagline": "Ad-free speed test for your TV.",
+  "summary": "Download, upload and latency, then what your line can handle.",
+  "accent": "#2DD4BF",
+  "accent_dark": "#2DD4BF",
+  "status": "beta",
+  "kind": "app",
+  "platforms": ["Android TV"],
+  "pills": ["Open source", "No account"],
+  "highlights": [
+    {"label": "SPEED", "title": "Download, upload, ping, jitter", "text": "Measured on Cloudflare's network, from the TV itself."},
+    {"label": "LOAD", "title": "Latency under load, graded A to D", "text": "The bufferbloat grade shows if the line stays responsive."},
+    {"label": "VERDICT", "title": "What the line handles", "text": "4K and 1080p streams, HD calls and gaming, in plain numbers."},
+    {"label": "LINK", "title": "Ethernet or Wi-Fi, explained", "text": "Wi-Fi band, signal, link rates and tips when the TV limits you."},
+    {"label": "REMOTE", "title": "Built for the sofa", "text": "Dark theme, large type, full D-pad control. EN, ES, RU."},
+    {"label": "PRIVATE", "title": "No ads, accounts or tracking", "text": "The last 50 results stay on the TV and nowhere else."}
+  ],
+  "steps": [
+    {"title": "Measure latency", "text": "20 probes give ping and jitter."},
+    {"title": "Download", "text": "6 streams for 10 s; first 2 s dropped."},
+    {"title": "Upload", "text": "6 POSTs for 10 s, same method."},
+    {"title": "Latency under load", "text": "Probed during both phases; graded A to D."},
+    {"title": "Verdict", "text": "Streams, calls, gaming and tips."}
+  ]
+}

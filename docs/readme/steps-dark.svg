@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="880" height="208" viewBox="0 0 880 208" role="img" aria-label="How it works. 1. Measure latency. 20 probes give ping and jitter. 2. Download. 6 streams for 10 s; first 2 s dropped. 3. Upload. 6 POSTs for 10 s, same method. 4. Latency under load. Probed during both phases; graded A to D. 5. Verdict. Streams, calls, gaming and tips.">
+<style>text{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Text',Inter,'Segoe UI',Helvetica,Arial,sans-serif;fill:#ECEDF2}.m{fill:#A2A7B5}.cap{font-size:11px;letter-spacing:.06em}.b{font-weight:600}</style>
+<rect x="0.5" y="0.5" width="879" height="207" rx="12" fill="#171A21" stroke="#2B2F3A"/>
+<line x1="90.0" x2="190.0" y1="52" y2="52" stroke="#2B2F3A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="60.0" cy="52" r="20" fill="#2DD4BF"/>
+<text class="b" x="60.0" y="58" font-size="17" text-anchor="middle" style="fill:#14161D">1</text>
+<text class="b" x="40.0" y="98" font-size="15.5">Measure latency</text>
+<text class="m" x="40.0" y="120" font-size="13.5">20 probes give ping</text>
+<text class="m" x="40.0" y="139" font-size="13.5">and jitter.</text>
+<line x1="250.0" x2="350.0" y1="52" y2="52" stroke="#2B2F3A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="220.0" cy="52" r="20" fill="#2DD4BF"/>
+<text class="b" x="220.0" y="58" font-size="17" text-anchor="middle" style="fill:#14161D">2</text>
+<text class="b" x="200.0" y="98" font-size="15.5">Download</text>
+<text class="m" x="200.0" y="120" font-size="13.5">6 streams for 10 s;</text>
+<text class="m" x="200.0" y="139" font-size="13.5">first 2 s dropped.</text>
+<line x1="410.0" x2="510.0" y1="52" y2="52" stroke="#2B2F3A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="380.0" cy="52" r="20" fill="#2DD4BF"/>
+<text class="b" x="380.0" y="58" font-size="17" text-anchor="middle" style="fill:#14161D">3</text>
+<text class="b" x="360.0" y="98" font-size="15.5">Upload</text>
+<text class="m" x="360.0" y="120" font-size="13.5">6 POSTs for 10 s,</text>
+<text class="m" x="360.0" y="139" font-size="13.5">same method.</text>
+<line x1="570.0" x2="670.0" y1="52" y2="52" stroke="#2B2F3A" stroke-width="2" stroke-linecap="round"/>
+<circle cx="540.0" cy="52" r="20" fill="#2DD4BF"/>
+<text class="b" x="540.0" y="58" font-size="17" text-anchor="middle" style="fill:#14161D">4</text>
+<text class="b" x="520.0" y="98" font-size="15.5">Latency under</text>
+<text class="b" x="520.0" y="118" font-size="15.5">load</text>
+<text class="m" x="520.0" y="140" font-size="13.5">Probed during both</text>
+<text class="m" x="520.0" y="159" font-size="13.5">phases; graded A to</text>
+<text class="m" x="520.0" y="178" font-size="13.5">D.</text>
+<circle cx="700.0" cy="52" r="20" fill="#2DD4BF"/>
+<text class="b" x="700.0" y="58" font-size="17" text-anchor="middle" style="fill:#14161D">5</text>
+<text class="b" x="680.0" y="98" font-size="15.5">Verdict</text>
+<text class="m" x="680.0" y="120" font-size="13.5">Streams, calls,</text>
+<text class="m" x="680.0" y="139" font-size="13.5">gaming and tips.</text>
+</svg>
