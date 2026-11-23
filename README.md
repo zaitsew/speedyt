@@ -104,4 +104,6 @@ Keys are never committed.
 
 MIT, copyright 2026. Holder named in [LICENSE](LICENSE).
 
+<sub>`ATDT speed.cloudflare.com` ... `CONNECT 56000`. The handshake screech is not included.</sub>
+
 <sub>Built by <a href="https://github.com/zaitsew">zaitsew</a> with a fleet of AI agents.</sub>
