@@ -104,6 +104,26 @@ Keys are never committed.
 
 MIT, copyright 2026. Holder named in [LICENSE](LICENSE).
 
-<sub>`ATDT speed.cloudflare.com` ... `CONNECT 56000`. The handshake screech is not included.</sub>
+<details>
+<summary>ms</summary>
+
+```mermaid
+sequenceDiagram
+  participant TV as Speedyt
+  participant Q as Router queue
+  participant CF as Cloudflare
+  TV->>CF: 🐇 ping, line idle
+  CF-->>TV: 9 ms
+  CF->>Q: download at full speed
+  Note over Q: 1,800 packets waiting
+  TV->>CF: 🐇 ping, line loaded
+  CF->>Q: reply
+  Note over Q: 🐇 queues behind 1,800 packets
+  Q-->>TV: 212 ms, bufferbloat grade D
+```
+
+A hare in a queue is a tortoise.
+
+</details>
 
 <sub>Built by <a href="https://github.com/zaitsew">zaitsew</a> with a fleet of AI agents.</sub>
